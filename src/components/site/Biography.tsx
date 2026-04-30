@@ -11,19 +11,25 @@ const chapters = [
     year: "2009",
     title: "O primeiro computador",
     body:
-      "Aos 10 anos ganhei meu primeiro PC. Comecei em fóruns gringos estudando programação e lógica. Aos 12, criei meu primeiro servidor de Conquer Online — fenômeno nas lan houses da época.",
+      "Aos 10 anos ganhei meu primeiro PC. Comecei em fóruns gringos estudando programação e lógica — o início de tudo.",
   },
   {
     year: "2012",
-    title: "Empreendendo cedo",
+    title: "Programando e ganhando dinheiro",
     body:
-      "Vendia servidores via Hamachi, hospedagens de Habbo, sites em Dreamweaver. Em paralelo, ajudei a fundar uma provedora local em Paço do Lumiar — de rádio a fibra óptica.",
+      "Aos 12 anos criei meu primeiro servidor de Conquer Online — fenômeno nas lan houses da época. Vendia servidores via Hamachi, hospedagens de Habbo e sites em Dreamweaver. Foi quando descobri que dava para viver da programação.",
+  },
+  {
+    year: "2019",
+    title: "Provedora de internet",
+    body:
+      "Ajudei a fundar uma provedora local em Paço do Lumiar, começando via rádio e evoluindo para fibra óptica. Aprendi profundamente sobre roteadores, servidores, redes e infraestrutura — tudo na prática.",
   },
   {
     year: "2020",
     title: "Pandemia & recomeço",
     body:
-      "Tive que pausar a faculdade de TI. Trabalhei em bicos para não parar. Quando a pandemia passou, fiz um pacto: estudar e trabalhar com disciplina total — acordar cedo, mochila com livros, ônibus, faculdade até as 23h. Repetir.",
+      "Tive que pausar a faculdade de TI e trabalhei em bicos para não parar. Quando a pandemia passou, assumi uma rotina de disciplina total: acordar cedo, mochila com livros, ônibus, faculdade até as 23h. E repetir, todo dia.",
   },
   {
     year: "2022",
