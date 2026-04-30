@@ -5,25 +5,25 @@ const chapters = [
     year: "1999",
     title: "Origem",
     body:
-      "Nasci em São Luís do Maranhão. Desde pequeno, fascinado por programação, processos e energia — sempre quis entender como tudo funcionava por trás.",
+      "Nasci em São Luís do Maranhão. Desde pequeno, fascinado por programação, processos e energia, sempre quis entender como tudo funcionava por trás.",
   },
   {
     year: "2009",
     title: "O primeiro computador",
     body:
-      "Aos 10 anos ganhei meu primeiro PC. Comecei em fóruns gringos estudando programação e lógica — o início de tudo.",
+      "Aos 10 anos ganhei meu primeiro PC. Comecei em fóruns gringos estudando programação e lógica, o início de tudo.",
   },
   {
     year: "2012",
     title: "Programando e ganhando dinheiro",
     body:
-      "Aos 12 anos criei meu primeiro servidor de Conquer Online — fenômeno nas lan houses da época. Vendia servidores via Hamachi, hospedagens de Habbo e sites em Dreamweaver. Foi quando descobri que dava para viver da programação.",
+      "Aos 12 anos criei meu primeiro servidor de Conquer Online, fenômeno nas lan houses da época. Vendia servidores via Hamachi, hospedagens de Habbo e sites em Dreamweaver. Foi quando descobri que dava para viver da programação.",
   },
   {
     year: "2019",
     title: "Provedora de internet",
     body:
-      "Ajudei a fundar uma provedora local em Paço do Lumiar, começando via rádio e evoluindo para fibra óptica. Aprendi profundamente sobre roteadores, servidores, redes e infraestrutura — tudo na prática.",
+      "Ajudei a fundar uma provedora local em Paço do Lumiar, começando via rádio e evoluindo para fibra óptica. Aprendi profundamente sobre roteadores, servidores, redes e infraestrutura, tudo na prática.",
   },
   {
     year: "2020",
@@ -35,13 +35,25 @@ const chapters = [
     year: "2022",
     title: "Gestão Portuária",
     body:
-      "Moro numa cidade portuária — precisava conhecer esse universo. Ingressei em Gestão Portuária, fiz MBA em Engenharia Portuária, viajei para o Porto de Fortaleza, conheci a Lubnor da Petrobras e mentores como Alfredo Alle.",
+      "Moro numa cidade portuária, precisava conhecer esse universo. Ingressei em Gestão Portuária, viajei para o Porto de Fortaleza, conheci a Lubnor da Petrobras e mentores como Alfredo Alle.",
+  },
+  {
+    year: "2025",
+    title: "Primeira graduação concluída",
+    body:
+      "Conclui minha primeira graduação em Gestão Portuária, um momento marcante e de grandes emoções. Um abraço especial aos meus colegas de turma: vocês foram essenciais nessa jornada.",
+  },
+  {
+    year: "2026",
+    title: "MBA em Engenharia Portuária",
+    body:
+      "Finalizei meu MBA em Engenharia Portuária, consolidando conhecimentos técnicos e estratégicos para atuar em projetos de maior complexidade no setor.",
   },
   {
     year: "Hoje",
     title: "Fertgrow & Engenharia Elétrica",
     body:
-      "Atualmente na Fertgrow, criando soluções inovadoras para reduzir gargalos operacionais e sistêmicos com tecnologia. Em paralelo, curso Engenharia Elétrica. Também reportei, com responsabilidade, uma falha de banco de dados ao Porto do Itaqui — solucionada com sucesso. Grande abraço ao time!",
+      "Atualmente na Fertgrow, criando soluções inovadoras para reduzir gargalos operacionais e sistêmicos com tecnologia. Em paralelo, curso Engenharia Elétrica. Também reportei, com responsabilidade, uma falha de banco de dados ao Porto do Itaqui, solucionada com sucesso. Grande abraço ao time!",
   },
 ];
 
