@@ -30,7 +30,10 @@ export const Dream = () => {
             intercâmbio na Itália.
           </p>
           <p className="mt-6 font-display text-xl italic text-copper-soft">
-            "Sonhar não custa nada, e disciplina nos leva longe."
+            "A sorte é o que acontece quando a preparação encontra a oportunidade."
+          </p>
+          <p className="mt-2 text-sm uppercase tracking-[0.25em] text-cream/60">
+            — Sêneca
           </p>
         </motion.div>
       </div>
