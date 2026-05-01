@@ -20,15 +20,17 @@ export const Dream = () => {
             Meu sonho
           </p>
           <h2 className="mt-6 font-display text-4xl font-light leading-tight text-balance md:text-6xl">
-            Ser um <em className="italic text-copper-soft">grande engenheiro</em> da
-            Vale — em automação, tecnologia ou processos.
+            Ser <em className="italic text-copper-soft">CEO</em> de uma grande
+            companhia multinacional.
           </h2>
           <p className="mt-8 text-lg leading-relaxed text-cream/80">
-            Sei que a Vale é referência no Brasil. Um dia chegarei lá. Quem sabe um
-            cargo de CEO no futuro. Também sonho em fazer um intercâmbio na Itália.
+            No futuro, quero liderar uma grande companhia multinacional, unindo
+            minhas experiências de mercado e de vida em decisões que envolvem
+            negócios e operações de ponta a ponta. Também sonho em fazer um
+            intercâmbio na Itália.
           </p>
           <p className="mt-6 font-display text-xl italic text-copper-soft">
-            "Sonhar não custa nada — e disciplina nos leva longe."
+            "Sonhar não custa nada, e disciplina nos leva longe."
           </p>
         </motion.div>
       </div>

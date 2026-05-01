@@ -14,8 +14,21 @@ const skillGroups = [
     items: ["SAP", "TOTVS", "Service Desk", "Sistemas Embarcados", "IA Geral"],
   },
   {
+    label: "Logística & Supply Chain",
+    items: [
+      "Cabotagem",
+      "Operações Portuárias",
+      "Supply Chain",
+      "COMEX",
+      "Incoterms",
+      "Roteirização",
+      "S&OP",
+      "WMS",
+    ],
+  },
+  {
     label: "Gestão & Processos",
-    items: ["Lean Seis Sigma", "Kaizen", "5S", "Green Belt"],
+    items: ["Lean Seis Sigma", "Kaizen", "5S", "Green Belt", "PDCA", "Mapeamento de Processos"],
   },
 ];
 
