@@ -20,11 +20,11 @@ import g10 from "@/assets/gallery/gallery-10.jpg";
 
 const photos = [
   { src: g1, caption: "Visita técnica — Lubnor / Petrobras (Fortaleza)" },
-  { src: g2, caption: "Porto de Fortaleza — navio Express France" },
+  { src: g2, caption: "Porto de Mucuripe — Fortaleza, navio Express France" },
   { src: g3, caption: "Somos Petrobras — visita institucional" },
-  { src: g4, caption: "Operação portuária — terminal de granéis" },
-  { src: g5, caption: "Bastidores da operação" },
-  { src: g7, caption: "Equipe em campo" },
+  { src: g4, caption: "Operação portuária em Itaqui — terminal de granéis" },
+  { src: g5, caption: "Operação de Drone para Nuvem de Pontos" },
+  { src: g7, caption: "Visita à Expolog" },
   { src: g8, caption: "Conhecendo a infraestrutura portuária" },
   { src: g9, caption: "Aprendizado em campo" },
   { src: g10, caption: "Networking & mentoria" },
