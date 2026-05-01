@@ -38,8 +38,9 @@ export const Hero = () => {
             className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
           >
             Gestor portuário, especialista em engenharia portuária e estudante de
-            engenharia elétrica. Transformo gargalos operacionais em soluções
-            inteligentes — onde tecnologia, processos e energia se encontram.
+            engenharia elétrica. Atuo na interseção entre logística, supply chain
+            e tecnologia, transformando gargalos operacionais em soluções
+            inteligentes que conectam processos, energia e dados de ponta a ponta.
           </motion.p>
 
           {/* Arrow indicator → bio */}
@@ -74,7 +75,7 @@ export const Hero = () => {
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest-deep/70 to-transparent p-6">
               <p className="font-display text-sm italic text-cream">
-                "Otimizar o que já funciona — eis o desafio."
+                "Logística inteligente é fazer cada elo da cadeia conversar, e decidir, em tempo real."
               </p>
             </div>
           </div>
