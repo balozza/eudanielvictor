@@ -27,9 +27,9 @@ const chapters = [
   },
   {
     year: "2020",
-    title: "Pandemia & recomeço",
+    title: "Pandemia e recomeço",
     body:
-      "Tive que pausar a faculdade de TI e trabalhei em bicos para não parar. Quando a pandemia passou, assumi uma rotina de disciplina total: acordar cedo, mochila com livros, ônibus, faculdade até as 23h. E repetir, todo dia.",
+      "Precisei interromper temporariamente a graduação em Tecnologia da Informação e busquei oportunidades alternativas de trabalho para manter minha trajetória em movimento. Superado o período pandêmico, retomei os estudos com uma rotina de alta disciplina, conciliando deslocamentos diários, leitura constante e aulas até o fim da noite, transformando consistência em resultado.",
   },
   {
     year: "2022",
