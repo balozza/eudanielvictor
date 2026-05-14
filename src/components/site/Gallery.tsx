@@ -17,6 +17,7 @@ import g7 from "@/assets/gallery/gallery-7.jpg";
 import g8 from "@/assets/gallery/gallery-8.jpg";
 import g9 from "@/assets/gallery/gallery-9.jpg";
 import g10 from "@/assets/gallery/gallery-10.jpg";
+import gTcn from "@/assets/gallery/gallery-tcn.jpg";
 
 const photos = [
   { src: g1, caption: "Visita técnica — Lubnor / Petrobras (Fortaleza)" },
@@ -28,6 +29,7 @@ const photos = [
   { src: g8, caption: "Conhecendo a infraestrutura portuária" },
   { src: g9, caption: "Aprendizado em campo" },
   { src: g10, caption: "Networking & mentoria" },
+  { src: gTcn, caption: "Visita técnica à empresa TCN — Terminal Corredor Norte" },
 ];
 
 export const Gallery = () => {
