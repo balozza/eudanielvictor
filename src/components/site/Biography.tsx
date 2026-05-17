@@ -116,6 +116,28 @@ export const Biography = () => {
                 ))}
               </ul>
             </div>
+
+            <div className="mt-6 rounded-2xl border border-copper/30 bg-gradient-to-br from-forest to-forest-deep p-8 text-background shadow-elegant">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-copper opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-copper" />
+                </span>
+                <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-copper-soft">
+                  Atualmente
+                </p>
+              </div>
+              <h3 className="mt-4 font-display text-2xl font-medium">{currentRole.company}</h3>
+              <p className="mt-1 text-sm text-background/70">{currentRole.role}</p>
+              <ul className="mt-5 space-y-2">
+                {currentRole.bullets.map((b) => (
+                  <li key={b} className="flex gap-2 text-sm text-background/85">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-copper" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </motion.aside>
         </div>
       </div>
