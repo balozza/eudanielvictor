@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ComposableMap, Geographies, Geography, Marker, Line } from "react-simple-maps";
-import imgSantarem from "@/assets/ports/santarem.jpg";
-import imgBelem from "@/assets/ports/belem.jpg";
-import imgPontaMadeira from "@/assets/ports/ponta-madeira.jpg";
-import imgItaqui from "@/assets/ports/itaqui.jpg";
-import imgPiaui from "@/assets/ports/piaui.jpg";
-import imgPecem from "@/assets/ports/pecem.jpg";
-import imgMucuripe from "@/assets/ports/mucuripe.jpg";
+import imgSantarem from "@/assets/ports/santarem.webp";
+import imgBelem from "@/assets/ports/belem.webp";
+import imgPontaMadeira from "@/assets/ports/ponta-madeira.webp";
+import imgItaqui from "@/assets/ports/itaqui.webp";
+import imgPiaui from "@/assets/ports/piaui.webp";
+import imgPecem from "@/assets/ports/pecem.webp";
+import imgMucuripe from "@/assets/ports/mucuripe.webp";
 
 type Port = {
   id: string;
