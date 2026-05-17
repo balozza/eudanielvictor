@@ -39,10 +39,20 @@ const paragraphs = [
 
 const pillars = [
   { k: "01", t: "Engenharia Portuária", d: "Operações, planejamento e infraestrutura." },
-  { k: "02", t: "Tecnologia & IA", d: "Automação e inteligência aplicada a processos." },
+  { k: "02", t: "Inovação & ERP", d: "Desenvolvimento, integração e automação de sistemas." },
   { k: "03", t: "Logística & Supply Chain", d: "Eficiência operacional ponta a ponta." },
-  { k: "04", t: "Transformação Digital", d: "Integração entre engenharia e dados." },
+  { k: "04", t: "IA & Transformação Digital", d: "Dados e inteligência aplicados ao negócio." },
 ];
+
+const currentRole = {
+  company: "Fertgrow",
+  role: "Inovação de Sistemas & Otimização de Processos",
+  bullets: [
+    "Adoção de tecnologia aplicada à operação",
+    "Desenvolvimento de código-fonte para ERP",
+    "Execução, testes e entrega de resultados",
+  ],
+};
 
 export const Biography = () => {
   return (
