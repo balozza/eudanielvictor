@@ -23,6 +23,7 @@ const Index = () => {
         <Hero />
         <Biography />
         <Gallery />
+        <PortsMap />
         <Projects />
         <Skills />
         <Dream />
