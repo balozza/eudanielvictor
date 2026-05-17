@@ -120,8 +120,8 @@ export const Biography = () => {
             <div className="mt-6 rounded-2xl border border-copper/30 bg-gradient-to-br from-forest to-forest-deep p-8 text-background shadow-elegant">
               <div className="flex items-center gap-2">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-copper opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-copper" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
                 </span>
                 <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-copper-soft">
                   Atualmente
