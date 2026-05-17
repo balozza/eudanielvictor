@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import portrait from "@/assets/daniel-portrait.jpg";
+import portrait from "@/assets/daniel-portrait.webp";
 
 export const Hero = () => {
   return (

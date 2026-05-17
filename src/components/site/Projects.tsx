@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import projectsBg from "@/assets/projects-bg.jpg";
-import p01 from "@/assets/projects/projeto-01.png";
-import p02 from "@/assets/projects/projeto-02.png";
-import p03 from "@/assets/projects/projeto-03.jpg";
-import p04 from "@/assets/projects/projeto-04.jpg";
-import p05 from "@/assets/projects/projeto-05.jpg";
-import p06 from "@/assets/projects/projeto-06.jpg";
+import projectsBg from "@/assets/projects-bg.webp";
+import p01 from "@/assets/projects/projeto-01.webp";
+import p02 from "@/assets/projects/projeto-02.webp";
+import p03 from "@/assets/projects/projeto-03.webp";
+import p04 from "@/assets/projects/projeto-04.webp";
+import p05 from "@/assets/projects/projeto-05.webp";
+import p06 from "@/assets/projects/projeto-06.webp";
 
 const projects = [
   {
