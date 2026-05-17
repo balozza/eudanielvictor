@@ -16,6 +16,12 @@ const paragraphs = [
     soluções técnicas e estratégicas aos desafios operacionais e logísticos.
   </>,
   <>
+    Atualmente atuo na <HL>Fertgrow</HL>, responsável por <HL>inovação de sistemas</HL>,{" "}
+    <HL>otimização de processos</HL> e melhoria contínua — levando tecnologia para dentro da
+    operação, executando, testando e entregando resultados mensuráveis. Também desenvolvo{" "}
+    <HL>código-fonte para sistemas ERP</HL>, conectando regra de negócio, dados e automação.
+  </>,
+  <>
     Ao longo da minha trajetória, venho desenvolvendo conhecimentos em operações portuárias,
     planejamento, análise de processos, sistemas tecnológicos e <HL>transformação digital</HL>{" "}
     aplicada à indústria e à logística.
