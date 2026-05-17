@@ -16,6 +16,12 @@ const paragraphs = [
     soluções técnicas e estratégicas aos desafios operacionais e logísticos.
   </>,
   <>
+    Atualmente atuo na <HL>Fertgrow</HL>, responsável por <HL>inovação de sistemas</HL>,{" "}
+    <HL>otimização de processos</HL> e melhoria contínua — levando tecnologia para dentro da
+    operação, executando, testando e entregando resultados mensuráveis. Também desenvolvo{" "}
+    <HL>código-fonte para sistemas ERP</HL>, conectando regra de negócio, dados e automação.
+  </>,
+  <>
     Ao longo da minha trajetória, venho desenvolvendo conhecimentos em operações portuárias,
     planejamento, análise de processos, sistemas tecnológicos e <HL>transformação digital</HL>{" "}
     aplicada à indústria e à logística.
@@ -33,10 +39,20 @@ const paragraphs = [
 
 const pillars = [
   { k: "01", t: "Engenharia Portuária", d: "Operações, planejamento e infraestrutura." },
-  { k: "02", t: "Tecnologia & IA", d: "Automação e inteligência aplicada a processos." },
+  { k: "02", t: "Inovação & ERP", d: "Desenvolvimento, integração e automação de sistemas." },
   { k: "03", t: "Logística & Supply Chain", d: "Eficiência operacional ponta a ponta." },
-  { k: "04", t: "Transformação Digital", d: "Integração entre engenharia e dados." },
+  { k: "04", t: "IA & Transformação Digital", d: "Dados e inteligência aplicados ao negócio." },
 ];
+
+const currentRole = {
+  company: "Fertgrow",
+  role: "Inovação de Sistemas & Otimização de Processos",
+  bullets: [
+    "Adoção de tecnologia aplicada à operação",
+    "Desenvolvimento de código-fonte para ERP",
+    "Execução, testes e entrega de resultados",
+  ],
+};
 
 export const Biography = () => {
   return (
@@ -96,6 +112,28 @@ export const Biography = () => {
                       <h3 className="font-display text-lg font-medium text-forest">{p.t}</h3>
                       <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
                     </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-copper/30 bg-gradient-to-br from-forest to-forest-deep p-8 text-background shadow-elegant">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-copper opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-copper" />
+                </span>
+                <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-copper-soft">
+                  Atualmente
+                </p>
+              </div>
+              <h3 className="mt-4 font-display text-2xl font-medium">{currentRole.company}</h3>
+              <p className="mt-1 text-sm text-background/70">{currentRole.role}</p>
+              <ul className="mt-5 space-y-2">
+                {currentRole.bullets.map((b) => (
+                  <li key={b} className="flex gap-2 text-sm text-background/85">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-copper" />
+                    <span>{b}</span>
                   </li>
                 ))}
               </ul>
