@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ComposableMap, Geographies, Geography, Marker, Line } from "react-simple-maps";
-import g2 from "@/assets/gallery/gallery-2.jpg";
-import g4 from "@/assets/gallery/gallery-4.jpg";
-import g8 from "@/assets/gallery/gallery-8.jpg";
-import gTcn from "@/assets/gallery/gallery-tcn.jpg";
+import imgSantarem from "@/assets/ports/santarem.jpg";
+import imgBelem from "@/assets/ports/belem.jpg";
+import imgPontaMadeira from "@/assets/ports/ponta-madeira.jpg";
+import imgItaqui from "@/assets/ports/itaqui.jpg";
+import imgPiaui from "@/assets/ports/piaui.jpg";
+import imgPecem from "@/assets/ports/pecem.jpg";
+import imgMucuripe from "@/assets/ports/mucuripe.jpg";
 
 type Port = {
   id: string;
   name: string;
   state: string;
+  city: string;
+  image: string;
   coordinates: [number, number]; // [lng, lat]
   anchor?: "start" | "end" | "middle";
   dx?: number;
@@ -17,38 +22,25 @@ type Port = {
 };
 
 const ports: Port[] = [
-  { id: "santarem", name: "Porto de Santarém", state: "PA", coordinates: [-54.71, -2.43], anchor: "middle", dx: 0, dy: -14 },
-  { id: "belem", name: "Porto de Belém", state: "PA", coordinates: [-48.5, -1.45], anchor: "middle", dx: 0, dy: -14 },
-  { id: "ponta-madeira", name: "Ponta da Madeira — Vale", state: "MA", coordinates: [-44.37, -2.57], anchor: "end", dx: -10, dy: -10 },
-  { id: "itaqui", name: "Porto do Itaqui", state: "MA", coordinates: [-44.37, -2.7], anchor: "end", dx: -10, dy: 14 },
-  { id: "piaui", name: "Porto do Piauí", state: "PI", coordinates: [-41.66, -2.88], anchor: "middle", dx: 0, dy: 18 },
-  { id: "pecem", name: "Porto de Pecém", state: "CE", coordinates: [-38.81, -3.55], anchor: "start", dx: 10, dy: -4 },
-  { id: "mucuripe", name: "Porto do Mucuripe", state: "CE", coordinates: [-38.48, -3.71], anchor: "start", dx: 10, dy: 16 },
+  { id: "santarem", name: "Porto de Santarém", state: "PA", city: "Santarém", image: imgSantarem, coordinates: [-54.71, -2.43], anchor: "middle", dx: 0, dy: -14 },
+  { id: "belem", name: "Porto de Belém", state: "PA", city: "Belém", image: imgBelem, coordinates: [-48.5, -1.45], anchor: "middle", dx: 0, dy: -14 },
+  { id: "ponta-madeira", name: "Ponta da Madeira — Vale", state: "MA", city: "São Luís", image: imgPontaMadeira, coordinates: [-44.37, -2.57], anchor: "end", dx: -10, dy: -10 },
+  { id: "itaqui", name: "Porto do Itaqui", state: "MA", city: "São Luís", image: imgItaqui, coordinates: [-44.37, -2.7], anchor: "end", dx: -10, dy: 14 },
+  { id: "piaui", name: "Porto do Piauí", state: "PI", city: "Luís Correia", image: imgPiaui, coordinates: [-41.66, -2.88], anchor: "middle", dx: 0, dy: 18 },
+  { id: "pecem", name: "Porto de Pecém", state: "CE", city: "São Gonçalo do Amarante", image: imgPecem, coordinates: [-38.81, -3.55], anchor: "start", dx: 10, dy: -4 },
+  { id: "mucuripe", name: "Porto do Mucuripe", state: "CE", city: "Fortaleza", image: imgMucuripe, coordinates: [-38.48, -3.71], anchor: "start", dx: 10, dy: 16 },
 ];
 
-const visitedStates: Record<string, { label: string; image: string }> = {
-  PA: { label: "Pará", image: gTcn },
-  MA: { label: "Maranhão", image: g4 },
-  PI: { label: "Piauí", image: g8 },
-  CE: { label: "Ceará", image: g2 },
-};
-
-const portsByState = ports.reduce<Record<string, Port[]>>((acc, p) => {
-  (acc[p.state] ||= []).push(p);
-  return acc;
-}, {});
+const visitedStates = new Set(ports.map((p) => p.state));
 
 export const PortsMap = () => {
-  const [hovered, setHovered] = useState<string | null>(null);
+  const [hovered, setHovered] = useState<Port | null>(null);
   const [mouse, setMouse] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMouse({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
-
-  const hoveredData = hovered ? visitedStates[hovered] : null;
-  const hoveredPorts = hovered ? portsByState[hovered] ?? [] : [];
 
   return (
     <section id="rota" className="relative bg-background py-32">
@@ -61,7 +53,7 @@ export const PortsMap = () => {
             Portos que <em className="italic text-copper">visitei</em> no Brasil.
           </h2>
           <p className="mt-6 leading-relaxed text-muted-foreground">
-            Passe o cursor sobre os estados destacados para ver os portos visitados.
+            Passe o cursor sobre cada marcador para ver a foto oficial do porto.
           </p>
           <div className="mx-auto mt-8 h-px w-16 bg-copper/60" />
         </div>
@@ -76,6 +68,7 @@ export const PortsMap = () => {
           <div
             className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-cream/40 to-background p-2 shadow-elegant md:p-6"
             onMouseMove={handleMove}
+            onMouseLeave={() => setHovered(null)}
           >
             <ComposableMap
               projection="geoMercator"
@@ -88,14 +81,11 @@ export const PortsMap = () => {
                 {({ geographies }) =>
                   geographies.map((geo) => {
                     const sigla: string | undefined = geo.properties.sigla;
-                    const visited = sigla ? !!visitedStates[sigla] : false;
-                    const isHover = sigla === hovered;
+                    const visited = sigla ? visitedStates.has(sigla) : false;
                     return (
                       <Geography
                         key={geo.rsmKey}
                         geography={geo}
-                        onMouseEnter={() => visited && setHovered(sigla!)}
-                        onMouseLeave={() => setHovered(null)}
                         style={{
                           default: {
                             fill: visited
@@ -104,17 +94,14 @@ export const PortsMap = () => {
                             stroke: "hsl(var(--forest) / 0.35)",
                             strokeWidth: 0.5,
                             outline: "none",
-                            cursor: visited ? "pointer" : "default",
-                            transition: "fill 0.2s",
                           },
                           hover: {
                             fill: visited
-                              ? "hsl(var(--copper) / 0.45)"
+                              ? "hsl(var(--copper) / 0.28)"
                               : "hsl(var(--forest) / 0.06)",
-                            stroke: "hsl(var(--copper))",
-                            strokeWidth: visited ? 1 : 0.5,
+                            stroke: "hsl(var(--forest) / 0.45)",
+                            strokeWidth: 0.5,
                             outline: "none",
-                            cursor: visited ? "pointer" : "default",
                           },
                           pressed: { outline: "none" },
                         }}
@@ -142,7 +129,20 @@ export const PortsMap = () => {
                     <animate attributeName="r" values="5;11;5" dur="2.4s" repeatCount="indefinite" />
                     <animate attributeName="opacity" values="0.6;0;0.6" dur="2.4s" repeatCount="indefinite" />
                   </circle>
-                  <circle r={3.5} fill="hsl(var(--copper))" stroke="hsl(var(--cream))" strokeWidth={1.2} />
+                  {/* hit-target maior + handlers */}
+                  <circle
+                    r={14}
+                    fill="transparent"
+                    style={{ cursor: "pointer" }}
+                    onMouseEnter={() => setHovered(p)}
+                  />
+                  <circle
+                    r={hovered?.id === p.id ? 5 : 3.5}
+                    fill="hsl(var(--copper))"
+                    stroke="hsl(var(--cream))"
+                    strokeWidth={1.4}
+                    style={{ pointerEvents: "none", transition: "r 0.2s" }}
+                  />
                   <text
                     textAnchor={p.anchor ?? "middle"}
                     x={p.dx ?? 0}
@@ -166,9 +166,9 @@ export const PortsMap = () => {
             </ComposableMap>
 
             <AnimatePresence>
-              {hoveredData && (
+              {hovered && (
                 <motion.div
-                  key={hovered}
+                  key={hovered.id}
                   initial={{ opacity: 0, scale: 0.95, y: 6 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: 6 }}
@@ -183,22 +183,16 @@ export const PortsMap = () => {
                 >
                   <div className="aspect-[16/10] overflow-hidden bg-forest-deep">
                     <img
-                      src={hoveredData.image}
-                      alt={hoveredData.label}
+                      src={hovered.image}
+                      alt={hovered.name}
                       className="h-full w-full object-cover"
                     />
                   </div>
                   <div className="p-3">
                     <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-copper">
-                      {hoveredData.label}
+                      {hovered.city} — {hovered.state}
                     </p>
-                    <ul className="mt-1.5 space-y-0.5">
-                      {hoveredPorts.map((p) => (
-                        <li key={p.id} className="font-display text-sm text-forest">
-                          {p.name}
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="mt-1 font-display text-sm text-forest">{hovered.name}</p>
                   </div>
                 </motion.div>
               )}
