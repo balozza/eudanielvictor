@@ -1,5 +1,10 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ComposableMap, Geographies, Geography, Marker, Line } from "react-simple-maps";
+import g2 from "@/assets/gallery/gallery-2.jpg";
+import g4 from "@/assets/gallery/gallery-4.jpg";
+import g8 from "@/assets/gallery/gallery-8.jpg";
+import gTcn from "@/assets/gallery/gallery-tcn.jpg";
 
 type Port = {
   id: string;
@@ -21,7 +26,30 @@ const ports: Port[] = [
   { id: "mucuripe", name: "Porto do Mucuripe", state: "CE", coordinates: [-38.48, -3.71], anchor: "start", dx: 10, dy: 16 },
 ];
 
+const visitedStates: Record<string, { label: string; image: string }> = {
+  PA: { label: "Pará", image: gTcn },
+  MA: { label: "Maranhão", image: g4 },
+  PI: { label: "Piauí", image: g8 },
+  CE: { label: "Ceará", image: g2 },
+};
+
+const portsByState = ports.reduce<Record<string, Port[]>>((acc, p) => {
+  (acc[p.state] ||= []).push(p);
+  return acc;
+}, {});
+
 export const PortsMap = () => {
+  const [hovered, setHovered] = useState<string | null>(null);
+  const [mouse, setMouse] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+
+  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMouse({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  const hoveredData = hovered ? visitedStates[hovered] : null;
+  const hoveredPorts = hovered ? portsByState[hovered] ?? [] : [];
+
   return (
     <section id="rota" className="relative bg-background py-32">
       <div className="container mx-auto px-6">
@@ -33,7 +61,7 @@ export const PortsMap = () => {
             Portos que <em className="italic text-copper">visitei</em> no Brasil.
           </h2>
           <p className="mt-6 leading-relaxed text-muted-foreground">
-            Uma jornada técnica pelos principais terminais do Norte e Nordeste.
+            Passe o cursor sobre os estados destacados para ver os portos visitados.
           </p>
           <div className="mx-auto mt-8 h-px w-16 bg-copper/60" />
         </div>
@@ -45,7 +73,10 @@ export const PortsMap = () => {
           transition={{ duration: 0.8 }}
           className="mx-auto mt-16 max-w-5xl"
         >
-          <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-cream/40 to-background p-2 shadow-elegant md:p-6">
+          <div
+            className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-cream/40 to-background p-2 shadow-elegant md:p-6"
+            onMouseMove={handleMove}
+          >
             <ComposableMap
               projection="geoMercator"
               projectionConfig={{ scale: 800, center: [-55, -14] }}
@@ -55,31 +86,44 @@ export const PortsMap = () => {
             >
               <Geographies geography="/brazil-states.geojson">
                 {({ geographies }) =>
-                  geographies.map((geo) => (
-                    <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      style={{
-                        default: {
-                          fill: "hsl(var(--forest) / 0.08)",
-                          stroke: "hsl(var(--forest) / 0.35)",
-                          strokeWidth: 0.5,
-                          outline: "none",
-                        },
-                        hover: {
-                          fill: "hsl(var(--forest) / 0.14)",
-                          stroke: "hsl(var(--forest) / 0.5)",
-                          strokeWidth: 0.6,
-                          outline: "none",
-                        },
-                        pressed: { outline: "none" },
-                      }}
-                    />
-                  ))
+                  geographies.map((geo) => {
+                    const sigla: string | undefined = geo.properties.sigla;
+                    const visited = sigla ? !!visitedStates[sigla] : false;
+                    const isHover = sigla === hovered;
+                    return (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        onMouseEnter={() => visited && setHovered(sigla!)}
+                        onMouseLeave={() => setHovered(null)}
+                        style={{
+                          default: {
+                            fill: visited
+                              ? "hsl(var(--copper) / 0.18)"
+                              : "hsl(var(--forest) / 0.06)",
+                            stroke: "hsl(var(--forest) / 0.35)",
+                            strokeWidth: 0.5,
+                            outline: "none",
+                            cursor: visited ? "pointer" : "default",
+                            transition: "fill 0.2s",
+                          },
+                          hover: {
+                            fill: visited
+                              ? "hsl(var(--copper) / 0.45)"
+                              : "hsl(var(--forest) / 0.06)",
+                            stroke: "hsl(var(--copper))",
+                            strokeWidth: visited ? 1 : 0.5,
+                            outline: "none",
+                            cursor: visited ? "pointer" : "default",
+                          },
+                          pressed: { outline: "none" },
+                        }}
+                      />
+                    );
+                  })
                 }
               </Geographies>
 
-              {/* Rota conectando os portos */}
               {ports.slice(0, -1).map((p, i) => (
                 <Line
                   key={`line-${p.id}`}
@@ -92,7 +136,6 @@ export const PortsMap = () => {
                 />
               ))}
 
-              {/* Marcadores */}
               {ports.map((p) => (
                 <Marker key={p.id} coordinates={p.coordinates}>
                   <circle r={8} fill="hsl(var(--copper) / 0.15)">
@@ -113,6 +156,7 @@ export const PortsMap = () => {
                       stroke: "hsl(var(--background))",
                       strokeWidth: 2.5,
                       strokeLinejoin: "round",
+                      pointerEvents: "none",
                     }}
                   >
                     {p.name}
@@ -120,6 +164,45 @@ export const PortsMap = () => {
                 </Marker>
               ))}
             </ComposableMap>
+
+            <AnimatePresence>
+              {hoveredData && (
+                <motion.div
+                  key={hovered}
+                  initial={{ opacity: 0, scale: 0.95, y: 6 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 6 }}
+                  transition={{ duration: 0.18 }}
+                  className="pointer-events-none absolute z-20 w-64 overflow-hidden rounded-xl border border-copper/40 bg-background/95 shadow-elegant backdrop-blur"
+                  style={{
+                    left: Math.min(mouse.x + 18, 9999),
+                    top: mouse.y + 18,
+                    transform:
+                      mouse.x > 600 ? "translateX(calc(-100% - 36px))" : undefined,
+                  }}
+                >
+                  <div className="aspect-[16/10] overflow-hidden bg-forest-deep">
+                    <img
+                      src={hoveredData.image}
+                      alt={hoveredData.label}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-copper">
+                      {hoveredData.label}
+                    </p>
+                    <ul className="mt-1.5 space-y-0.5">
+                      {hoveredPorts.map((p) => (
+                        <li key={p.id} className="font-display text-sm text-forest">
+                          {p.name}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </motion.div>
       </div>
