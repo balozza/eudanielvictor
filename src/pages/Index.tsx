@@ -1,12 +1,17 @@
+import { lazy, Suspense } from "react";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
 import { Biography } from "@/components/site/Biography";
-import { Gallery } from "@/components/site/Gallery";
-import { PortsMap } from "@/components/site/PortsMap";
-import { Projects } from "@/components/site/Projects";
-import { Skills } from "@/components/site/Skills";
-import { Dream } from "@/components/site/Dream";
-import { Contact } from "@/components/site/Contact";
+
+// Seções abaixo da dobra — carregadas sob demanda para acelerar o primeiro paint
+const Gallery = lazy(() => import("@/components/site/Gallery").then((m) => ({ default: m.Gallery })));
+const PortsMap = lazy(() => import("@/components/site/PortsMap").then((m) => ({ default: m.PortsMap })));
+const Projects = lazy(() => import("@/components/site/Projects").then((m) => ({ default: m.Projects })));
+const Skills = lazy(() => import("@/components/site/Skills").then((m) => ({ default: m.Skills })));
+const Dream = lazy(() => import("@/components/site/Dream").then((m) => ({ default: m.Dream })));
+const Contact = lazy(() => import("@/components/site/Contact").then((m) => ({ default: m.Contact })));
+
+const SectionFallback = () => <div className="min-h-[60vh]" aria-hidden />;
 
 const Index = () => {
   return (
@@ -22,12 +27,14 @@ const Index = () => {
         <Nav />
         <Hero />
         <Biography />
-        <Gallery />
-        <PortsMap />
-        <Projects />
-        <Skills />
-        <Dream />
-        <Contact />
+        <Suspense fallback={<SectionFallback />}>
+          <Gallery />
+          <PortsMap />
+          <Projects />
+          <Skills />
+          <Dream />
+          <Contact />
+        </Suspense>
       </main>
     </>
   );

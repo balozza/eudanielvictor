@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import portrait from "@/assets/daniel-portrait.jpg";
+import portrait from "@/assets/daniel-portrait.webp";
 
 export const Hero = () => {
   return (
@@ -71,6 +71,9 @@ export const Hero = () => {
               alt="Daniel Victor — retrato profissional"
               width={896}
               height={1152}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest-deep/70 to-transparent p-6">

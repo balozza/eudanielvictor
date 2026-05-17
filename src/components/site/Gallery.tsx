@@ -8,16 +8,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import g1 from "@/assets/gallery/gallery-1.jpg";
-import g2 from "@/assets/gallery/gallery-2.jpg";
-import g3 from "@/assets/gallery/gallery-3.jpg";
-import g4 from "@/assets/gallery/gallery-4.jpg";
-import g5 from "@/assets/gallery/gallery-5.jpg";
-import g7 from "@/assets/gallery/gallery-7.jpg";
-import g8 from "@/assets/gallery/gallery-8.jpg";
-import g9 from "@/assets/gallery/gallery-9.jpg";
-import g10 from "@/assets/gallery/gallery-10.jpg";
-import gTcn from "@/assets/gallery/gallery-tcn.jpg";
+import g1 from "@/assets/gallery/gallery-1.webp";
+import g2 from "@/assets/gallery/gallery-2.webp";
+import g3 from "@/assets/gallery/gallery-3.webp";
+import g4 from "@/assets/gallery/gallery-4.webp";
+import g5 from "@/assets/gallery/gallery-5.webp";
+import g7 from "@/assets/gallery/gallery-7.webp";
+import g8 from "@/assets/gallery/gallery-8.webp";
+import g9 from "@/assets/gallery/gallery-9.webp";
+import g10 from "@/assets/gallery/gallery-10.webp";
+import gTcn from "@/assets/gallery/gallery-tcn.webp";
 
 const photos = [
   { src: g1, caption: "Visita técnica — Lubnor / Petrobras (Fortaleza)" },
