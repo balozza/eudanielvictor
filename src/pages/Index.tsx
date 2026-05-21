@@ -29,7 +29,7 @@ const Index = () => {
         <Biography />
         <Suspense fallback={<SectionFallback />}>
           <Gallery />
-          <PortsMap />
+          
           <Projects />
           <Skills />
           <Dream />
