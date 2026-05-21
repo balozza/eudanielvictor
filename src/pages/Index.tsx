@@ -5,7 +5,7 @@ import { Biography } from "@/components/site/Biography";
 
 // Seções abaixo da dobra — carregadas sob demanda para acelerar o primeiro paint
 const Gallery = lazy(() => import("@/components/site/Gallery").then((m) => ({ default: m.Gallery })));
-const PortsMap = lazy(() => import("@/components/site/PortsMap").then((m) => ({ default: m.PortsMap })));
+
 const Projects = lazy(() => import("@/components/site/Projects").then((m) => ({ default: m.Projects })));
 const Skills = lazy(() => import("@/components/site/Skills").then((m) => ({ default: m.Skills })));
 const Dream = lazy(() => import("@/components/site/Dream").then((m) => ({ default: m.Dream })));
@@ -29,7 +29,7 @@ const Index = () => {
         <Biography />
         <Suspense fallback={<SectionFallback />}>
           <Gallery />
-          <PortsMap />
+          
           <Projects />
           <Skills />
           <Dream />
