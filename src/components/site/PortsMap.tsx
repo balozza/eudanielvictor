@@ -45,19 +45,6 @@ export const PortsMap = () => {
   return (
     <section id="rota" className="relative bg-background py-32">
       <div className="container mx-auto px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-copper">
-            Rota Portuária
-          </p>
-          <h2 className="font-display text-4xl font-light text-balance text-foreground md:text-6xl">
-            Portos que <em className="italic text-copper">visitei</em> no Brasil.
-          </h2>
-          <p className="mt-6 leading-relaxed text-muted-foreground">
-            Passe o cursor sobre cada marcador para ver a foto oficial do porto.
-          </p>
-          <div className="mx-auto mt-8 h-px w-16 bg-copper/60" />
-        </div>
-
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
