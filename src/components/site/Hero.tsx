@@ -69,8 +69,8 @@ export const Hero = () => {
             <img
               src={portrait}
               alt="Daniel Victor — retrato profissional"
-              width={1086}
-              height={1448}
+              width={1195}
+              height={1316}
               loading="eager"
               fetchPriority="high"
               decoding="async"
