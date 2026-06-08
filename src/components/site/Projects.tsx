@@ -1,7 +1,18 @@
 import { motion } from "framer-motion";
 import { Star, ShieldCheck } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import projectsBg from "@/assets/projects-bg.webp";
-import pFertgrow from "@/assets/projects/projeto-fertgrow.webp";
+import fertgrowLogin from "@/assets/projects/fertgrow-login.webp";
+import fertgrowPainel from "@/assets/projects/fertgrow-painel.webp";
+import fertgrowAutorizacao from "@/assets/projects/fertgrow-autorizacao.webp";
+import fertgrowDescarga from "@/assets/projects/fertgrow-descarga.webp";
+import fertgrowProcessados from "@/assets/projects/fertgrow-processados.webp";
 import p01 from "@/assets/projects/projeto-01.webp";
 import p02 from "@/assets/projects/projeto-02.webp";
 import p03 from "@/assets/projects/projeto-03.webp";
@@ -9,14 +20,30 @@ import p04 from "@/assets/projects/projeto-04.webp";
 import p05 from "@/assets/projects/projeto-05.webp";
 import p06 from "@/assets/projects/projeto-06.webp";
 
-const projects = [
+type Project = {
+  n: string;
+  title: string;
+  desc: string;
+  img: string;
+  featured?: boolean;
+  gallery?: { src: string; caption: string }[];
+};
+
+const projects: Project[] = [
   {
     n: "00",
     title: "Portal de Expedição — Fertgrow S.A.",
     desc:
       "Plataforma completa de ponta a ponta para o time de expedição de uma multinacional: acompanha o fertilizante desde a saída do navio, carregamento na transportadora, peso, ticket Guardian, NF-e, entrada e saída na fábrica, com painel de controle, indicadores em tempo real e dashboards por turno e transportadora. Em produção sob certificado SSL.",
-    img: pFertgrow,
+    img: fertgrowPainel,
     featured: true,
+    gallery: [
+      { src: fertgrowLogin, caption: "Tela de Login — acesso restrito por credenciais corporativas" },
+      { src: fertgrowPainel, caption: "Painel de Controle — indicadores em tempo real e desempenho por transportadora" },
+      { src: fertgrowAutorizacao, caption: "Autorização de Descarga — veículos agendados aguardando liberação" },
+      { src: fertgrowDescarga, caption: "Veículos em Descarga — atualização automática a cada 1 minuto" },
+      { src: fertgrowProcessados, caption: "Veículos Processados — entrada, saída e peso registrados na balança" },
+    ],
   },
   {
     n: "01",
