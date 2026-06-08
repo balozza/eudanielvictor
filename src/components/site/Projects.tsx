@@ -1,7 +1,18 @@
 import { motion } from "framer-motion";
 import { Star, ShieldCheck } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import projectsBg from "@/assets/projects-bg.webp";
-import pFertgrow from "@/assets/projects/projeto-fertgrow.webp";
+import fertgrowLogin from "@/assets/projects/fertgrow-login.webp";
+import fertgrowPainel from "@/assets/projects/fertgrow-painel.webp";
+import fertgrowAutorizacao from "@/assets/projects/fertgrow-autorizacao.webp";
+import fertgrowDescarga from "@/assets/projects/fertgrow-descarga.webp";
+import fertgrowProcessados from "@/assets/projects/fertgrow-processados.webp";
 import p01 from "@/assets/projects/projeto-01.webp";
 import p02 from "@/assets/projects/projeto-02.webp";
 import p03 from "@/assets/projects/projeto-03.webp";
@@ -9,14 +20,30 @@ import p04 from "@/assets/projects/projeto-04.webp";
 import p05 from "@/assets/projects/projeto-05.webp";
 import p06 from "@/assets/projects/projeto-06.webp";
 
-const projects = [
+type Project = {
+  n: string;
+  title: string;
+  desc: string;
+  img: string;
+  featured?: boolean;
+  gallery?: { src: string; caption: string }[];
+};
+
+const projects: Project[] = [
   {
     n: "00",
     title: "Portal de Expedição — Fertgrow S.A.",
     desc:
       "Plataforma completa de ponta a ponta para o time de expedição de uma multinacional: acompanha o fertilizante desde a saída do navio, carregamento na transportadora, peso, ticket Guardian, NF-e, entrada e saída na fábrica, com painel de controle, indicadores em tempo real e dashboards por turno e transportadora. Em produção sob certificado SSL.",
-    img: pFertgrow,
+    img: fertgrowPainel,
     featured: true,
+    gallery: [
+      { src: fertgrowLogin, caption: "Tela de Login — acesso restrito por credenciais corporativas" },
+      { src: fertgrowPainel, caption: "Painel de Controle — indicadores em tempo real e desempenho por transportadora" },
+      { src: fertgrowAutorizacao, caption: "Autorização de Descarga — veículos agendados aguardando liberação" },
+      { src: fertgrowDescarga, caption: "Veículos em Descarga — atualização automática a cada 1 minuto" },
+      { src: fertgrowProcessados, caption: "Veículos Processados — entrada, saída e peso registrados na balança" },
+    ],
   },
   {
     n: "01",
@@ -107,20 +134,51 @@ export const Projects = () => {
                   Projeto destaque
                 </span>
               )}
-              <div className={`relative overflow-hidden bg-gradient-forest ${p.featured ? "aspect-[16/9]" : "aspect-[16/10]"}`}>
-                <img
-                  src={p.img}
-                  alt={p.title}
-                  loading="lazy"
-                  width={1024}
-                  height={640}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/70 via-forest-deep/10 to-transparent" />
-                <span className="absolute left-4 top-4 rounded-full bg-background/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-copper backdrop-blur">
-                  {p.featured ? "Em produção · SSL" : `Projeto ${p.n}`}
-                </span>
-              </div>
+              {p.gallery ? (
+                <div className="relative bg-forest-deep">
+                  <Carousel opts={{ loop: true }} className="w-full">
+                    <CarouselContent>
+                      {p.gallery.map((g, idx) => (
+                        <CarouselItem key={idx}>
+                          <div className="relative aspect-[16/9] overflow-hidden bg-gradient-forest">
+                            <img
+                              src={g.src}
+                              alt={g.caption}
+                              loading="lazy"
+                              className="h-full w-full object-cover"
+                            />
+                            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/40 to-transparent p-4 pt-12">
+                              <p className="text-xs font-medium text-background/95 md:text-sm">
+                                {g.caption}
+                              </p>
+                            </div>
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="left-3 border-0 bg-background/90 text-forest hover:bg-background" />
+                    <CarouselNext className="right-3 border-0 bg-background/90 text-forest hover:bg-background" />
+                  </Carousel>
+                  <span className="pointer-events-none absolute left-4 top-4 z-10 rounded-full bg-background/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-copper backdrop-blur">
+                    Em produção · SSL
+                  </span>
+                </div>
+              ) : (
+                <div className="relative aspect-[16/10] overflow-hidden bg-gradient-forest">
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    loading="lazy"
+                    width={1024}
+                    height={640}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/70 via-forest-deep/10 to-transparent" />
+                  <span className="absolute left-4 top-4 rounded-full bg-background/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-copper backdrop-blur">
+                    Projeto {p.n}
+                  </span>
+                </div>
+              )}
               <div className="p-8">
                 <h3 className="font-display text-2xl font-medium leading-tight text-forest">
                   {p.title}
