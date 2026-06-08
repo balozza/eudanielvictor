@@ -95,9 +95,19 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant"
+              className={`group relative overflow-hidden rounded-2xl border bg-card shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant ${
+                p.featured
+                  ? "border-copper/60 ring-2 ring-copper/40 md:col-span-2"
+                  : "border-border"
+              }`}
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-gradient-forest">
+              {p.featured && (
+                <span className="absolute right-4 top-4 z-10 flex items-center gap-1.5 rounded-full bg-copper px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-background shadow-elegant">
+                  <Star className="h-3 w-3 fill-current" />
+                  Projeto destaque
+                </span>
+              )}
+              <div className={`relative overflow-hidden bg-gradient-forest ${p.featured ? "aspect-[16/9]" : "aspect-[16/10]"}`}>
                 <img
                   src={p.img}
                   alt={p.title}
@@ -108,7 +118,7 @@ export const Projects = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/70 via-forest-deep/10 to-transparent" />
                 <span className="absolute left-4 top-4 rounded-full bg-background/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-copper backdrop-blur">
-                  Projeto {p.n}
+                  {p.featured ? "Em produção · SSL" : `Projeto ${p.n}`}
                 </span>
               </div>
               <div className="p-8">
@@ -118,6 +128,20 @@ export const Projects = () => {
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {p.desc}
                 </p>
+                {p.featured && (
+                  <div className="mt-5 flex flex-wrap items-center gap-2 text-xs">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-forest/10 px-3 py-1 font-medium text-forest">
+                      <ShieldCheck className="h-3.5 w-3.5" />
+                      Certificado SSL
+                    </span>
+                    <span className="rounded-full bg-copper/10 px-3 py-1 font-medium text-copper">
+                      Multinacional
+                    </span>
+                    <span className="rounded-full bg-muted px-3 py-1 font-medium text-muted-foreground">
+                      Em produção
+                    </span>
+                  </div>
+                )}
               </div>
             </motion.article>
           ))}
