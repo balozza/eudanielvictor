@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { Star, ShieldCheck } from "lucide-react";
 import projectsBg from "@/assets/projects-bg.webp";
+import pFertgrow from "@/assets/projects/projeto-fertgrow.webp";
 import p01 from "@/assets/projects/projeto-01.webp";
 import p02 from "@/assets/projects/projeto-02.webp";
 import p03 from "@/assets/projects/projeto-03.webp";
