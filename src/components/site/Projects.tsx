@@ -124,7 +124,7 @@ export const Projects = () => {
               transition={{ duration: 0.5, delay: i * 0.05 }}
               className={`group relative overflow-hidden rounded-2xl border bg-card shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant ${
                 p.featured
-                  ? "border-copper/60 ring-2 ring-copper/40 md:col-span-2"
+                  ? "border-copper/60 ring-2 ring-copper/40"
                   : "border-border"
               }`}
             >
