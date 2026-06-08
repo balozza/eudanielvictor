@@ -11,6 +11,14 @@ import p06 from "@/assets/projects/projeto-06.webp";
 
 const projects = [
   {
+    n: "00",
+    title: "Portal de Expedição — Fertgrow S.A.",
+    desc:
+      "Plataforma completa de ponta a ponta para o time de expedição de uma multinacional: acompanha o fertilizante desde a saída do navio, carregamento na transportadora, peso, ticket Guardian, NF-e, entrada e saída na fábrica, com painel de controle, indicadores em tempo real e dashboards por turno e transportadora. Em produção sob certificado SSL.",
+    img: pFertgrow,
+    featured: true,
+  },
+  {
     n: "01",
     title: "Câmera com IA + alerta via Teams",
     desc:
